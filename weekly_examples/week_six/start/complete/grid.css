@@ -1,0 +1,254 @@
+/* import Google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Climate+Crisis&family=Lato:wght@300&display=swap');
+
+/* General Styles & Resets */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 90%;
+    max-width: 900px;
+    margin: 2em auto;
+}
+
+.container>div {
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #57C4E5;
+    border: 2px solid #D1D646;
+}
+
+.ex1,
+.ex2 {
+    padding-bottom: 2em;
+    border-bottom: 2px solid #333;
+}
+
+p {
+    margin-bottom: 1em;
+}
+
+.ex2 {
+    margin-top: 2em;
+}
+
+.ex2 header {
+    background-color: #F19143
+}
+
+.ex2 aside {
+    background-color: #F55536;
+}
+
+.ex2 main {
+    background-color: #FFB238
+}
+
+.ex2 footer {
+    background-color: #FABC3C;
+}
+
+
+.ex3 div div:nth-of-type(1) {
+    background-color: #29335C;
+}
+
+.ex3 div div:nth-of-type(2) {
+    background-color: #F3A712;
+}
+
+.ex3 div div:nth-of-type(3) {
+    background-color: #E4572E;
+}
+
+.ex3 div div:nth-of-type(4) {
+    background-color: #A8C686;
+}
+
+.imgcontainer {
+    max-width: 40vw;
+    margin: 0 auto;
+}
+
+.imgcontainer img {
+    max-width: 100%;
+}
+
+/* Typography */
+
+html {
+    font-size: 10px;
+}
+
+body {
+    font-size: 1.8rem;
+    line-height: 1.8;
+    font-family: sans-serif;
+
+}
+
+h1 {
+    font-family: 'Climate Crisis', cursive;
+    letter-spacing: 0.5rem;
+    padding-top: 1em;
+}
+
+h1 {
+    font-size: 4rem;
+    margin-bottom: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+h2 {
+    font-size: 3rem;
+    padding-bottom: 0.5em;
+}
+
+p {
+    padding: 1em;
+}
+
+/* GRID STUFF STARTS HERE */
+
+
+/************* Example One - Defining Your Grid ****************/
+
+.ex1 .container {
+    display: grid;
+    /* create grid container */
+    /* grid-template-columns: 400px 200px 100px; /* define column structure */
+    /*grid-template-rows: 100px 100px; define row structure */
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    grid-auto-rows: minmax(100px, auto);
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+/*********** Example 2 - Placing Items on the Grid  
+**************************/
+
+.ex2 .container {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-areas: 
+    "header header "
+    "main aside"
+    "footer footer"; 
+}
+
+.ex2 header {
+    /*grid-column: 1/3;
+    grid-row: 1/2;*/
+    grid-area: header; 
+}
+
+.ex2 main {
+    /*grid-column: 1/2;
+    grid-row: 2/3;*/
+    grid-area: main; 
+}
+
+.ex2 aside {
+    /*grid-column: 2/3;
+    grid-row: 2/3;*/
+    grid-area: aside; 
+}
+
+.ex2 footer {
+    /*grid-column: 1/3;*/
+    grid-area: footer;  
+} 
+
+/*********** Example 3 - Alignment with CSS Grid **************************/
+
+/* Try It - Recreate the layout shown by placing the items on the grid */
+
+.ex3 .container {
+    display: grid; 
+    grid-template-rows: 200px 200px; 
+    grid-template-columns: 200px 200px 200px; 
+    height: 500px; 
+    width: 850px; 
+    gap: 0.25em; 
+    
+}
+
+.dark-blue {
+    grid-column: span 2;  
+}
+
+.light-orange {
+    grid-row: 2; 
+}
+
+.dark-orange {
+    grid-row: 2; 
+}
+
+.green {
+    grid-row: span 2;
+}
+
+
+
+/********** Example 4 - Subgrid  ************************/
+
+.ex4 .parent-grid {
+    display: grid; 
+    grid-template-columns: 1fr 2fr 1fr; 
+    gap: 10px; 
+    background:#f5f5f5; 
+    padding: 10px;
+    margin-bottom: 2rem; 
+}
+
+.ex4 .header {
+    background-color: #007acc; 
+    color: #fff; 
+    padding: 10px; 
+    text-align:center; 
+}
+
+
+.ex4 .subgrid > div {
+    background-color: #4caf50; 
+    color: #fff; 
+    padding: 10px; 
+    text-align:center; 
+}
+
+.ex4 .normal-grid > div {
+    background-color: #f44335; 
+    color: #fff; 
+    padding: 10px; 
+    text-align:center; 
+}
+
+.ex4 .nested {
+    /*place grid item  - it is both a grid item and grid container */ 
+    grid-column: 1/-1; 
+    /*turn into a grid container */ 
+    display: grid; 
+    margin-top: 10px; 
+    gap:10px; 
+    background: #ddd; 
+    padding: 10px; 
+}
+
+/* Misaligned - sets its own template */
+.ex4 .normal-grid {
+    grid-template-columns: 1fr 1fr; 
+}
+
+/* Aligned - inherits from parents */ 
+.ex4 .subgrid {
+    grid-template-columns: subgrid; 
+}
+
+
+/* example adapted from https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Grids */

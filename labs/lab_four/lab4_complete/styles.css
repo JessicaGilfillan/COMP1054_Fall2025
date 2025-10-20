@@ -1,0 +1,203 @@
+/* ========================
+   Campus Events — Grid Lab (Finished Example)
+   ======================== */
+
+/* 1) Base tokens */
+:root {
+  --bg: #fff;
+  --panel: #004b87;
+  --text: #fff;
+  --muted: #333;
+  --accent: rgb(81 131 14);
+  /* glassmorphism effect */
+  --glass-blur: 14px;
+  --glass-sat: 1.35;
+  --glass-alpha-strong: 0.18;
+  --glass-alpha-weak: 0.08;
+  --glass-border-alpha: 0.35;
+  --radius: 14px;
+  --gap: 1rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.5;
+}
+
+.site-header {
+  padding: 2rem;
+  min-height: 30vw;
+  background-color: var(--header);
+  background: url('images/pexels-thisisengineering-3861969.jpg') center/cover no-repeat;
+  margin-inline: auto;
+  margin-bottom: 2rem;
+}
+
+.header-bg {
+  /*glassmorphism effect */ 
+  background:linear-gradient(to bottom right, rgba(255, 255, 255, var(--glass-alpha-strong)),rgba(255, 255, 255, var(--glass-alpha-weak)));
+  backdrop-filter: blur(var(--glass-blur)) saturate(calc(var(--glass-sat) * 100%));
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+  padding: 1rem; 
+  max-width: 30rem; 
+  border-radius: 5px; 
+}
+
+h1 {
+  margin: 0 0 0.25rem;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+.lede {
+  color: var(--text);
+  margin: 0;
+}
+
+/* 2) OUTER GRID */
+.events {
+  --min: 260px;
+  /* tweak as you like */
+  display: grid;
+  gap: var(--gap);
+  /* Responsive columns with auto-fit + minmax */
+  grid-template-columns: repeat(auto-fit, minmax(var(--min), 1fr));
+  /* Shared row tracks for cards to inherit via subgrid (header / desc / footer) */
+  grid-auto-rows: auto 1fr auto;
+}
+
+/* 3) CARD uses SUBGRID for ROWS so headings, bodies, and footers align across cards */
+.event-card {
+  background: var(--panel);
+  border-radius: var(--radius);
+  padding: 0.75rem;
+  display: grid;
+
+  /* Inherit row tracks from parent using subgrid */
+  grid-template-rows: subgrid;
+  /* Ensure the card spans the same number of parent rows we declared */
+  grid-row: span 3;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.03), 0 12px 24px rgba(0, 0, 0, 0.25);
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.event-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 0 rgba(255, 255, 255, 0.03), 0 18px 28px rgba(0, 0, 0, 0.3);
+}
+
+/* Featured spans 2 columns on wider screens */
+@media (min-width: 900px) {
+  .event-card--featured {
+    grid-column: span 2;
+  }
+}
+
+/* 4) HEADER: small NESTED GRID to align date + title */
+.event-card__header {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.event-card__title {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  margin: 0;
+}
+
+/* Date badge */
+.event-card__date {
+  display: grid;
+  place-items: center;
+  width: 3.25rem;
+  aspect-ratio: 1 / 1;
+  border-radius: 12px;
+  background-color: var(--muted);
+  color: white;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.event-card__date-day {
+  font-size: 1.1rem;
+}
+
+.event-card__date-mon {
+  font-size: 0.8rem;
+  opacity: 0.9;
+}
+
+/* Body/description (row 2 of the subgrid) */
+.event-card__desc {
+  color: var(--text); 
+  margin: 0.25rem 0 0.5rem;
+}
+
+/* Footer (row 3 of the subgrid) */
+/* create small nested grid for alignment */
+.event-card__footer {
+  display: grid;
+  align-items: end;
+  justify-content: end;
+}
+
+.btn {
+  appearance: none;
+  border: 0;
+  border-radius: 10px;
+  padding: 0.45rem 0.8rem;
+  background: var(--accent);
+  color: var(--text);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.btn:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 2px;
+}
+
+.event-card--featured {
+  background-color: #0067ba;
+}
+
+/* Progressive enhancement: fallback when subgrid isn't supported */
+@supports not (grid-template-rows: subgrid) {
+  .event-card {
+    grid-template-rows: auto 1fr auto;
+    /* local rows */
+  }
+}
+
+/* Small tweaks for tighter mobile spacing */
+@media (max-width: 420px) {
+  :root {
+    --gap: 0.75rem;
+  }
+
+  .event-card {
+    padding: calc(var(--gap) + 0.125rem);
+  }
+}
+
+/* ============================
+   Reflection — answer these in your submission (comment or README)
+   ============================
+
+1) In what real UI situations on the web or in apps would using a GRID with SUBGRID give you a clear advantage over flexbox or manual equal-height tricks?
+
+2) Think about maintenance: if content editors add longer titles or descriptions later, how does subgrid help preserve alignment and visual rhythm across the layout? Where might it *not* help?
+
+*/

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en-CA">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Campus Events — Grid Lab (Finished Example)</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="header-bg">
+      <h1>Campus Events</h1>
+      <p class="lede">Finished example using CSS Grid + subgrid for aligned cards.</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="events" aria-label="Upcoming events">
+      <!-- Card 1 -->
+      <article class="event-card">
+        <header class="event-card__header">
+          <time class="event-card__date" datetime="2025-10-14">
+            <span class="event-card__date-day">14</span>
+            <span class="event-card__date-mon">Oct</span>
+          </time>
+          <h2 class="event-card__title">Tech Career Fair</h2>
+        </header>
+
+        <p class="event-card__desc">
+          Meet employers hiring software developers and UX talent. Bring your resume and portfolio.
+        </p>
+
+        <footer class="event-card__footer">
+          <a class="btn" href="#" aria-label="Learn more about Tech Career Fair">Details</a>
+        </footer>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="event-card">
+        <header class="event-card__header">
+          <time class="event-card__date" datetime="2025-10-18">
+            <span class="event-card__date-day">18</span>
+            <span class="event-card__date-mon">Oct</span>
+          </time>
+          <h2 class="event-card__title">Intro to Generative AI Workshop</h2>
+        </header>
+
+        <p class="event-card__desc">
+          Hands-on session covering prompting basics and model evaluation. Bring a laptop.
+        </p>
+
+        <footer class="event-card__footer">
+          <a class="btn" href="#" aria-label="Learn more about Intro to Generative AI Workshop">Details</a>
+        </footer>
+      </article>
+
+      <!-- Card 3 (longer text to test alignment) -->
+      <article class="event-card">
+        <header class="event-card__header">
+          <time class="event-card__date" datetime="2025-11-02">
+            <span class="event-card__date-day">02</span>
+            <span class="event-card__date-mon">Nov</span>
+          </time>
+          <h2 class="event-card__title">Alumni Panel: Careers in Game Dev</h2>
+        </header>
+
+        <p class="event-card__desc">
+          Alumni from Ubisoft, EA, and indie studios discuss paths into game programming, art,
+          and technical design. Q&amp;A to follow; light refreshments provided.
+        </p>
+
+        <footer class="event-card__footer">
+          <a class="btn" href="#" aria-label="Learn more about Alumni Panel: Careers in Game Dev">Details</a>
+        </footer>
+      </article>
+
+      <!-- Featured card (spans on wide screens) -->
+      <article class="event-card event-card--featured">
+        <header class="event-card__header">
+          <time class="event-card__date" datetime="2025-11-15">
+            <span class="event-card__date-day">15</span>
+            <span class="event-card__date-mon">Nov</span>
+          </time>
+          <h2 class="event-card__title">Hackathon: Climate + Code</h2>
+        </header>
+
+        <p class="event-card__desc">
+          24-hour hackathon focused on sustainability challenges on campus and in the community.
+        </p>
+
+        <footer class="event-card__footer">
+          <a class="btn" href="#" aria-label="Learn more about Hackathon: Climate + Code">Register</a>
+        </footer>
+      </article>
+    </section>
+  </main>
+</body>
+
+</html>

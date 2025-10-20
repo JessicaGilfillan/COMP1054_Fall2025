@@ -197,7 +197,3 @@ h1 {
    ============================
 
 1) In what real UI situations on the web or in apps would using a GRID with SUBGRID give you a clear advantage over flexbox or manual equal-height tricks?
-
-2) Think about maintenance: if content editors add longer titles or descriptions later, how does subgrid help preserve alignment and visual rhythm across the layout? Where might it *not* help?
-
-*/
